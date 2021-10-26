@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Jira User</title>
+</head>
+
+<body>
+<h1>Add new Jira Account</h1>
+<form action="/web/jira/accounts" method="post">
+<label for="email">Email:</label><br>
+<input type="text" id="email" name="email"><br>
+<label for="api_token">Api Token:</label><br>
+<input type="password" id="api_token" name="api_token"><br><br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+

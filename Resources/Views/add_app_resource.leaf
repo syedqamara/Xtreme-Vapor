@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script data-require="jquery@2.2.4" data-semver="2.2.4" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+ <link data-require="bootstrap@3.3.7" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+ <script data-require="bootstrap@3.3.7" data-semver="3.3.7" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css" />
+ <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<style>
+ body {
+  margin-left: 30px;
+}
+</style>
+</head>
+<body>
+
+<h1>New App Resource</h1>
+<p>Add new Application Resources.</p>
+
+        <h2>For adding new resource please follow bellow file structure in Resource.zip file</h2>
+        <code style="width=50%;background-color:#f5f5f5;"><h3 style="color:green">
+            ── Resource.zip<BR>
+            │   ├── *.mobileprovision<BR>
+            │   ├── ExportOptions.plist<BR>
+            └──────────────────────────
+            <BR>
+            <BR></h3>
+            <h4 style="color:green;">
+                Please do not change ExportOption.plist file name.
+            </h4>
+            <h3 style="color:red;">
+            Please place all provisioning profiles which are being used in your ExportOption.plist with same name and ExporOptions.plist in a single zip file.</h3>
+        </code>
+
+<form action="/web/app_resources/add" method="post" enctype="multipart/form-data"   >
+  <table style="width:120%;">
+    <tr>
+      <label for="app_id">Select Application:</label>
+      <select name="app_id" id="app_id" class="selectpicker"  data-live-search="true" multiple="">
+        #for(app in applications):
+          <option value=#(app.id)>#(app.name)</option>
+        #endfor
+      </select>
+      <BR>
+    </tr>
+    <tr>
+      <label for="build_mode_id">Select Build Modes:</label>
+      <select name="build_mode_id" id="build_mode_id" class="selectpicker"  data-live-search="true" multiple="">
+        #for(build_mode in build_modes):
+          <option value=#(build_mode.id)>#(build_mode.title)</option>
+        #endfor
+      </select>
+      <BR>
+    </tr>
+    <tr>
+        <label for="cert_password">Certificate Password:</label><br>
+        <input type="text" id="cert_password" name="cert_password"><br>
+        
+        <label for="certificate_name">Certificate:</label>
+        <input type="file" id="certificate" name="certificate" accept=".p12"><br>
+    </tr>
+    <tr>
+        <label for="resources_name">Select Resource Zip:</label>
+        <input type="file" id="resources" name="resources" accept=".zip"><br><br>
+    </tr>
+    
+  </table>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+

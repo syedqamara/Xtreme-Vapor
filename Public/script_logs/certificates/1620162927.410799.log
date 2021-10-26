@@ -1,0 +1,6 @@
+Script:
+
+chmod 777 certificate.sh && ./certificate.sh /Users/syedqamarabbas/Documents/Projects/Xtreme-Vapor/Xtreme-Vapor/Public/ios/F96C3604-AF23-49EB-BBE5-AEC60E9AD3C6.p12 
+
+Output:
+

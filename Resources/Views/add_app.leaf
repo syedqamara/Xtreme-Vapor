@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<script data-require="jquery@2.2.4" data-semver="2.2.4" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+ <link data-require="bootstrap@3.3.7" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+ <script data-require="bootstrap@3.3.7" data-semver="3.3.7" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css" />
+
+<style>
+ body {
+  margin-left: 30px;
+}
+</style>
+
+<title>Create New App</title>
+</head>
+
+<body>
+<h1>New Application</h1>
+<form action="/web/apps/add" method="post" enctype="multipart/form-data">
+<label for="name">App Name:</label><br>
+<input type="text" id="name" name="name"><br>
+
+<label for="bundle_id">Bundle Identifier:</label><br>
+<input type="text" id="bundle_id" name="bundle_id"><br>
+
+<label for="git_url">Git URL:</label><br>
+<input type="text" id="git_url" name="git_url"><br>
+
+<label for="project">App Project Name:</label><br>
+<input type="text" id="project" name="project"><br>
+
+<label for="target">App Target Name:</label><br>
+<input type="text" id="target" name="target"><br>
+
+
+<label for="path_to_project">Project Path (If Project is at root folder in repository then please let this option empty):</label><br>
+<input type="text" id="path_to_project" name="path_to_project"><br>
+    
+<BR>
+<label for="platform">Select Platform:</label>
+<select name="platform" id="platform" class="selectpicker"  data-live-search="true" multiple="">
+  #for(platform in platforms):
+    <option value=#(platform.id)>#(platform.title)</option>s
+  #endfor
+</select>
+<BR>
+<BR>
+<label for="app_icon">App Icon:</label>  
+<input type="file" id="image" name="image"><br>
+<BR>
+<BR>
+<input type="submit" value="Submit" style="background-color:black;color:white;width:10%;">
+</form>
+</body>
+</html>
+

@@ -1,0 +1,6 @@
+Script:
+
+chmod 777 clone.sh && ./clone.sh /Users/syedqamarabbas/Xtreme-Vapor/Xtreme-Vapor/Public/ https://github.com/theentertainerme/entertainer-ios-modules-sdk.git 652D0F47-1364-4A8D-BFD6-96E6DD38E8AE repositories
+
+Output:
+

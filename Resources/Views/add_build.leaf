@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script data-require="jquery@2.2.4" data-semver="2.2.4" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+ <link data-require="bootstrap@3.3.7" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+ <script data-require="bootstrap@3.3.7" data-semver="3.3.7" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css" />
+ 
+<style>
+ body {
+  margin-left: 30px;
+}
+</style>
+ 
+</head>
+<body>
+
+<h2>New Build</h2>
+<p>Create a new build and distribute it OTA.</p>
+
+
+
+<form action="/web/builds/deploy" method="post">
+  <table style="width:120%;">
+    <tr>
+      <label for="app_id">Select Application:</label>
+      <select name="app_id" id="app_id" class="selectpicker"  data-live-search="true" multiple="">
+        #for(app in applications):
+          <option value=#(app.id)>#(app.name)</option>
+        #endfor
+      </select>
+      <BR>
+    </tr>
+    <tr>
+      <label for="build_mode_id">Select Build Modes:</label>
+      <select name="build_mode_id" id="build_mode_id" class="selectpicker"  data-live-search="true" multiple="">
+        #for(build_mode in build_modes):
+          <option value=#(build_mode.id)>#(build_mode.title)</option>
+        #endfor
+      </select>
+      <BR>
+    </tr>
+    <tr>
+      <label for="build_node_id">Select Build Node:</label>
+      <select name="build_node_id" id="build_node_id" class="selectpicker"  data-live-search="true" multiple="">
+        #for(build_node in build_nodes):
+          <option value=#(build_node.id)>#(build_node.title)</option>
+        #endfor
+      </select>
+      <BR>
+    </tr>
+    <tr>
+      <label for="git_branch">Git Branch</label><br>
+      <input type="text" id="git_branch" name="git_branch" value="master"><br>
+    </tr>
+    <tr>
+      <label for="release_notes">Release Notes</label><br>
+      <textarea id="release_notes" name="release_notes" cols="40" rows="10"></textarea>
+    </tr>
+  </table>
+  <input type="submit" value="Submit">
+</form>
+</body>
+</html>
+

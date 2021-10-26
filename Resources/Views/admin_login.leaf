@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Admin Panel</title>
+</head>
+
+<body>
+<h1>ENT Builds Admin Panel</h1>
+<form action="/web/auth" method="post">
+<label for="email">Email:</label><br>
+<input type="text" id="email" name="email"><br>
+<label for="password">Password:</label><br>
+<input type="text" id="password" name="password"><br><br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+

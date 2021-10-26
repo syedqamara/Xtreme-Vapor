@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    
+  <title>All Jira Accounts</title>
+</head>
+<STYLE>A {text-decoration: none;} </STYLE>
+<body>
+<table style="width:100%;">
+    <tr>
+        <th>
+            <img src="https://wac-cdn-2.atlassian.com/image/upload/f_auto,q_auto/dam/jcr:616e6748-ad8c-48d9-ae93-e49019ed5259/Atlassian-horizontal-blue-rgb.svg?cdnVersion=1572" alt="Logo" style="height:100%;">
+        </th>
+    </tr>
+    <tr style="width:100%;background-color:black;">
+        <th style="width:20%;background-color:white;border-style: ridge;border-width: 1px;border-color:#1b56c5;">
+            <h1><a href="/web/jira" style="color:#1b56c5;align:left;">Accounts</a></h1>
+        </th>
+        <th style="width:20%;background-color:#1b56c5;border-style: ridge;border-width: 1px;border-color:black;">
+            <h1><a href="/web/jira/users" style="color:white;align:left;">Users</a></h1>
+        </th>
+        <th style="width:20%;background-color:#1b56c5;border-style: ridge;border-width: 1px;border-color:black;">
+            <h1><a href="/web/jira/projects" style="color:white;align:left;">Projects</a></h1>
+        </th>
+        <th style="width:20%;background-color:#1b56c5;border-style: ridge;border-width: 1px;border-color:black;">
+            <h1><a href="/web/jira/issues_types" style="color:white;align:left;">Issue Types</a></h1>
+        </th>
+        <th style="width:20%;background-color:#1b56c5;border-style: ridge;border-width: 1px;border-color:black;">
+            <h1><a href="/web/jira/tickets" style="color:white;align:left;">Tickets</a></h1>
+        </th>
+    </tr>
+</table>
+<BR>
+
+<center>
+    <h1><a href="/web/jira/accounts" style="color:#1b56c5;align:right;">Add New Account</a></h1>
+</center>
+#if(count(accounts) == 0):
+    <table style="width:100%">
+        <tr style="background-color:#1b56c5;">
+            <th style="color:white;">Jira Email</th>
+            <th style="color:white;">Jira Api Token</th>
+            <th style="color:white;">Sync Projects</th>
+        </tr>
+    </table>
+    <center><h1 style="color: #1b56c5">No Jira Accounts Available</h1></center>
+#else:
+    <table style="width:100%" border=1 frame=hsides rules=rows>
+        <tr style="background-color:#1b56c5;">
+            <th style="color:white;">Jira Email</th>
+            <th style="color:white;">Jira Api Token</th>
+            <th style="color:white;">Sync Projects</th>
+        </tr>
+      #for(ac in accounts):
+        <tr style="background-color:white;">
+        <th style="color:black;">#(ac.email)</th>
+        <th style="color:black;">#(ac.api_token)</th>
+        <th><h3><a href="/web/jira/projects/add?jira_account=#(ac.id)" style="color:#1b56c5;align:right;">Sync</a></h3></th>
+        </tr>
+        #endfor
+    </table>
+#endif
+
+
+    
+</body>
+</html>
+

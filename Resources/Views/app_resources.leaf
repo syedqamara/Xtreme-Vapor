@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    
+  <title>All Builds</title>
+</head>
+<STYLE>A {text-decoration: none;} </STYLE>
+<body>
+
+<table style="width:100%;">
+    <tr>
+        <th>
+            <img src="https://etsitecdn.theentertainerme.com/logo.png" alt="Logo" style="width:20%;height:30px;">
+        </th>
+    </tr>
+    <tr style="width:100%;background-color:black;">
+        <th style="width:25%;">
+            <h1><a href="/web/apps" style="color:white;align:left;">Apps</a></h1>
+        </th>
+        <th style="width:25%;">
+            <h1><a href="/web/builds" style="color:white;align:right;">Builds</a></h1>
+        </th>
+        <th style="width:25%;background-color:#eda440;border-style: ridge;border-width: 1px;border-color:black;">
+            <h1><a href="/web/app_resources" style="color:black;align:right;">App Resources</a></h1>
+        </th>
+        <th style="width:25%;">
+            <h1><a href="/web/logout" style="color:white;align:right;">Logout</a></h1>
+        </th>
+    </tr>
+</table>
+
+<BR>
+<center>
+    <h1><a href="/web/app_resources/add" style="color:black;align:right;">Add Resources</a></h1>
+</center>
+<BR>
+
+#if(count(resources) == 0):
+    <table style="width:100%">
+        <tr style="background-color:black;">
+            <th style="color:white;">Platform</th>
+            <th style="color:white;">Resource Title</th>
+            <th style="color:white;">App Name</th>
+            <th style="color:white;">Bundle ID</th>
+            <th style="color:white;">Build Mode</th>
+            <th style="color:white;">Certificate Download</th>
+            <th style="color:white;">Resources Download</th>
+        </tr>
+    </table>
+    <center><h1>No Resource Found</h1></center>
+#else:
+    <table style="width:100%" border=1 frame=hsides rules=rows>
+            <tr style="background-color:black;">
+                <th style="color:white;">Platform</th>
+            <th style="color:white;">Resource Title</th>
+            <th style="color:white;">App Name</th>
+            <th style="color:white;">Bundle ID</th>
+            <th style="color:white;">Build Mode</th>
+            <th style="color:white;">Certificate Download</th>
+            <th style="color:white;">Resources Download</th>
+            <th style="color:white;">Add Cert to Keychain</th>
+            </tr>
+      #for(rs in resources):
+        <tr style="background-color:white;">
+        <th><img src='/#(rs.application.platform.image_url)' alt="AppIcon" style="width:30px;height:30px;"></th>
+        <th style="color:black;">#(rs.title)</th>
+        <th style="color:black;">#(rs.application.name)</th>
+        <th style="color:black;">#(rs.application.bundle_id)</th>
+        <th style="color:black;">#(rs.build_mode.title)</th>
+        <th style="color:black;"><a style="color:blue;" href="#(rs.cert_link)"><img src="/assets/download.png" alt="DownloadIcon" style="width:30px;height:30px;"></a></th>
+        <th style="color:black;"><a style="color:blue;" href="#(rs.resource_link)"><img src="/assets/download.png" alt="DownloadIcon" style="width:30px;height:30px;"></a></th>
+        <th style="color:black;"><a style="color:blue;" href="/web/app_resources/cert_to_keychain?id=#(rs.id)"><img src="/assets/keychain.png" alt="DownloadIcon" style="width:30px;height:30px;"></a></th>
+        </tr>
+        #endfor
+    </table>
+#endif
+
+</body>
+</html>
+
+  
+

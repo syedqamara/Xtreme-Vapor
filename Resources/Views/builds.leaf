@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    
+  <title>All Builds</title>
+</head>
+<STYLE>A {text-decoration: none;} </STYLE>
+<body>
+
+<table style="width:100%;">
+    <tr>
+        <th>
+            <img src="https://etsitecdn.theentertainerme.com/logo.png" alt="Logo" style="width:20%;height:30px;">
+        </th>
+    </tr>
+    <tr style="width:100%;background-color:black;">
+        <th style="width:25%;">
+            <h1><a href="/web/apps" style="color:white;align:left;">Apps</a></h1>
+        </th>
+        <th style="width:25%;background-color:#eda440;border-style: ridge;border-width: 1px;border-color:black;">
+            <h1><a href="/web/builds" style="color:black;align:right;">Builds</a></h1>
+        </th>
+        <th style="width:25%;">
+            <h1><a href="/web/app_resources" style="color:white;align:right;">App Resources</a></h1>
+        </th>
+        <th style="width:25%;">
+            <h1><a href="/web/logout" style="color:white;align:right;">Logout</a></h1>
+        </th>
+    </tr>
+    <tr style="width:30%;background-color:white;">
+        <th style="width:30%;">
+            
+        </th>
+        <th style="width:30%;">
+            <h1><a href="/web/builds/add" style="color:black;align:right;">Create Build</a></h1>
+        </th>
+        <th style="width:30%;">
+            
+        </th>
+    </tr>
+</table>
+
+<BR>
+
+<BR>
+
+    #if(count(builds) == 0):
+        <table style="width:100%">
+            <tr style="background-color:black;">
+                <th style="color:white;">Image</th>
+                <th style="color:white;">App Name</th>
+                <th style="color:white;">Branch</th>
+                <th style="color:white;">Git URL</th>
+                <th style="color:white;">Release Notes</th>
+                <th style="color:white;">Build Status</th>
+                <th style="color:white;">Download Link</th>
+            </tr>
+        </table>
+        <center><h1>No Builds Found</h1></center>
+    #else:
+        <table style="width:100%" border=1 frame=hsides rules=rows>
+            <tr style="background-color:black;">
+                <th style="color:white;">Platform</th>
+                <th style="color:white;">App Name</th>
+                <th style="color:white;">Branch</th>
+                <th style="color:white;">Release Notes</th>
+                <th style="color:white;">Build Status</th>
+                <th style="color:white;">Download Link</th>
+            </tr>
+            #for(build in builds):
+                <tr style="background-color:white;">
+                <th><img src='/#(build.application.platform.image_url)' alt="AppIcon" style="width:30px;height:30px;"></th>
+                <th style="color:black;">#(build.application.name)</th>
+                <th style="color:black;">#(build.git_branch)</th>
+                <th style="color:black;width:30%;"><p style="font-weight:lighter;">#(build.release_notes)</p></th>
+                <th style="color:black;">#(build.build_status)</th>
+                <th style="color:black;width:15%;width:15%;">
+                    #if(build.build_status == "processing"):
+                        <img src="https://miro.medium.com/max/1600/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt="AppIcon" style="width:75%;width:75%;">
+                    #endif
+                    #if(build.build_status == "success" && build.build_link != ""):
+                        <a style="color:blue;" href="itms-services://?action=download-manifest&url=#(build.build_link)"><img src="/assets/download.png" alt="AppIcon" style="width:30px;height:30px;"></a>
+                    #endif
+                </th>
+                </tr>
+            #endfor
+        </table>
+    #endif
+
+
+</body>
+</html>
+
+  
+

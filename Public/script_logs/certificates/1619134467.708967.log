@@ -1,0 +1,7 @@
+Script:
+
+chmod 777 certificate.sh && ./certificate.sh /Users/syedqamarabbas/Xtreme-Vapor/Xtreme-Vapor/Public/ios/6E1FA7C3-BD01-4BEE-9C9F-C6045BBA1B0A.p12 1111
+
+Output:
+
+1 identity imported.
